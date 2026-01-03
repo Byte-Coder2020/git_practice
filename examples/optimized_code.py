@@ -87,11 +87,17 @@ def load_config_cached():
     OPTIMIZED: Load configuration once and cache it.
     Subsequent calls return cached value.
     Performance gain: File I/O eliminated after first call.
+    
+    Note: This is example code for demonstration purposes.
+    In production, add proper error handling and path validation.
     """
     global _config_cache
     if _config_cache is None:
-        with open('config.txt', 'r') as f:
-            _config_cache = f.read()
+        try:
+            with open('config.txt', 'r') as f:
+                _config_cache = f.read()
+        except FileNotFoundError:
+            _config_cache = ""  # Return default for demonstration
     return _config_cache
 
 
@@ -110,6 +116,10 @@ class DatabaseConnectionPool:
     OPTIMIZED: Connection pooling to reuse database connections.
     Maintains a pool of connections instead of creating new ones.
     Performance gain: ~10x faster for multiple queries.
+    
+    Note: This is example/pseudocode for demonstration purposes.
+    The connection object is a placeholder and not meant to be executed.
+    In real implementations, use libraries like SQLAlchemy or connection pool libraries.
     """
     def __init__(self, pool_size=5):
         self.pool = [self.create_connection() for _ in range(pool_size)]
@@ -135,7 +145,10 @@ class DatabaseConnectionPool:
         self.available.append(connection)
     
     def create_connection(self):
-        # Placeholder for connection creation
+        """
+        Placeholder for connection creation.
+        In real code, this would return an actual database connection object.
+        """
         pass
 
 

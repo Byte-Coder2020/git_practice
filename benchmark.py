@@ -105,7 +105,6 @@ def main():
     search_list = list(range(1000))
     
     slow_time, _ = benchmark(check_membership_slow, items, search_list, runs=10)
-    search_set = set(search_list)
     fast_time, _ = benchmark(check_membership_fast, items, search_list, runs=10)
     improvement = slow_time / fast_time if fast_time > 0 else 0
     print_comparison("Check 100 items in 1000 elements (10 runs)", slow_time, fast_time, improvement)

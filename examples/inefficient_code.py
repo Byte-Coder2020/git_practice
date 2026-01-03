@@ -73,10 +73,16 @@ def load_config_repeatedly():
     """
     INEFFICIENT: Re-reading file on every function call.
     File I/O is expensive and should be cached when possible.
+    
+    Note: This is example code for demonstration purposes.
+    In production, add proper error handling and path validation.
     """
-    with open('config.txt', 'r') as f:
-        config = f.read()
-    return config
+    try:
+        with open('config.txt', 'r') as f:
+            config = f.read()
+        return config
+    except FileNotFoundError:
+        return ""  # Return default for demonstration
 
 
 def check_membership_slow(items, search_list):
@@ -95,6 +101,9 @@ class DatabaseConnection:
     """
     INEFFICIENT: Opening new database connection for each query.
     Connection pooling should be used instead.
+    
+    Note: This is example/pseudocode for demonstration purposes.
+    The connection object is a placeholder and not meant to be executed.
     """
     def query(self, sql):
         # Simulating opening a new connection each time
@@ -104,7 +113,10 @@ class DatabaseConnection:
         return result
     
     def create_connection(self):
-        # Placeholder for connection creation
+        """
+        Placeholder for connection creation.
+        In real code, this would return an actual database connection object.
+        """
         pass
 
 
